@@ -1,0 +1,371 @@
+body,html{
+    padding: 0;
+    margin: 0;
+}
+
+.CTA { /* styling the button on the navbar */
+    background-color: #D9D9D9;
+    padding: 8px 12px;
+    box-shadow: 0 0 20px rgba(254, 254, 254, 0.5);
+    animation: upAndDown 1s ease-in-out infinite alternate;
+    -webkit-animation: upAndDown 1s ease-in-out infinite alternate;
+}
+
+.CTA:hover{ 
+    animation: none;
+    -webkit-animation: none;
+}
+  @keyframes upAndDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-6px);
+      -webkit-transform: translateY(-6px);
+      -moz-transform: translateY(-6px);
+      -ms-transform: translateY(-6px);
+      -o-transform: translateY(-6px);
+}
+  }
+
+  .CTA-intro{ /* styling the button on the intoduction section */
+    position: absolute;
+    font-weight: bold;
+    top: 70%;
+    left: 50%;
+    padding: 8px 22px;
+    opacity: 0.8;
+    transform: skewY(-12deg);
+    -webkit-transform: skewY(-12deg);
+    -moz-transform: skewY(-12deg);
+    -ms-transform: skewY(-12deg);
+    -o-transform: skewY(-12deg);
+    box-shadow: 0 0 20px rgba(254, 254, 254, 0.5);
+
+}
+  
+
+@media (max-width: 800px) {
+    #navbarToggler { /* reducing the padding in the humburger menu*/
+     padding: 12px;
+    }
+  }
+  /* styling the introduction section */
+.intoduction {
+    position: relative;
+    height: 100vh;
+    max-height: 800px;
+  }
+  
+  .intoduction p {
+    position: absolute;
+    top: 50%;
+    transform: matrix(0, -0.5, 0, 0,0, -50%);
+    background-color: rgba(0, 0, 0, 0.368);
+    padding: 12px ;
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    -webkit-transform: matrix(0, -0.5, 0, 0,0, -50%);
+    -moz-transform: matrix(0, -0.5, 0, 0,0, -50%);
+    -ms-transform: matrix(0, -0.5, 0, 0,0, -50%);
+    -o-transform: matrix(0, -0.5, 0, 0,0, -50%);
+}
+  
+  .intoduction img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+ 
+
+.secTitle {   /* styling the title of all sections */
+        display: inline-block;
+        border-bottom: 3px solid #F27909;
+        line-height: 1.2;
+        text-align: center;
+        margin: 0 auto;
+        padding-bottom: 10px;
+      }
+
+ /* styling about us section */
+.setBackground{
+    background-color: #9CFFA0;
+    padding: 8px 0px;
+    height: fit-content;
+}
+
+.bgImg{ /* the img of the color "#FFA4A4" */
+    background-color: #FFA4A4;
+    width: 321px;
+    height: 300px;
+}
+.about_us_img{
+    width: 301px;
+    margin: 0;
+    transform: translate(40%, -60%);
+    -webkit-transform: translate(40%, -60%);
+    -moz-transform: translate(40%, -60%);
+    -ms-transform: translate(40%, -60%);
+    -o-transform: translate(40%, -60%);
+}
+#title{
+    text-align: center;
+    color: #6179E6;
+}
+
+footer{
+    background-color: black;
+    color: white;
+    padding: 12px 0px;
+}
+@media screen and (max-width: 800px) {
+
+    /* styling the menu in why chose moroco in sreens less than 800px */
+    .responsive-WM {  
+        flex-direction: row!important;
+        margin: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .responsive-WM img {
+        width: 100px;
+        height: 82px;
+        margin: 10px;
+    }
+    .reason-to-chose-Morroco-image{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+    .imgContainer{
+        max-width: 50%;
+        padding: 0;
+        margin-bottom: 0;
+     
+    }
+
+    /* I reduced the animation in the smaller screnns */
+    .about_us_img{
+        transform: translate(40%, -80%);
+        -webkit-transform: translate(40%, -80%);
+        -moz-transform: translate(40%, -80%);
+        -ms-transform: translate(40%, -80%);
+        -o-transform: translate(40%, -80%);
+}
+.setBackground{
+    margin: 0;
+    padding: 0;
+}
+.WM-icons{
+    width: 80px!important;
+}
+.reason{
+    padding: 0px;
+    margin: 0px;
+    border-left: 0.3rem solid #6179E6;
+    border-top-left-radius: 50px 50px;
+    border-bottom-left-radius: 50px 50px;
+}
+}
+
+
+@media screen and (max-width: 425px){
+    .about_us_img{
+        margin: 12px  auto;
+        display: block;
+        border-radius: 22%;
+        transform: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        -webkit-border-radius: 22%;
+        -moz-border-radius: 22%;
+        -ms-border-radius: 22%;
+        -o-border-radius: 22%;
+}
+        .bgImg{
+            display: none;
+        }
+        .imgContainer{
+            display: inline-block;
+        }
+
+        .reason-to-chose-Morroco-image{
+            width: 70%;
+            height: 100%;
+        }
+}
+
+/* styling why morrocco section */
+.WM-icons{
+    width: 80px;
+    height: 82px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.reason{
+    display: inline-block;
+    border-left: 0.5rem solid #6179E6;
+    border-top-left-radius: 90px 100px;
+    border-bottom-left-radius: 90px 100px;
+    padding: 8px 10px;
+    margin: 12px 0px;
+    cursor: pointer;
+}
+
+#text{
+    text-align: justify;
+}
+
+/* create the animation on scrolling */
+.hidden{
+    opacity: 0;
+    fill: blur(5px);
+    transform: translateX(-100%);
+    transition: all 2s;
+    -webkit-transition: all 2s;
+    -moz-transition: all 2s;
+    -ms-transition: all 2s;
+    -o-transition: all 2s;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0);
+    -webkit-filter: blur(0);
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+}
+
+/* our services animation delay's */
+.animation-delay:nth-child(2){
+    transition-delay: 200ms;
+
+}
+.animation-delay:nth-child(3){
+    transition-delay: 400ms;
+    
+}
+.animation-delay:nth-child(4){
+    transition-delay: 600ms;
+    
+}
+
+/* about us animation delay */
+
+.animation-delay:nth-child(6){
+    transition-delay: 200ms;
+    
+}
+
+.animation-delay:nth-child(7){
+    transition-delay: 400ms;
+    
+}
+
+/* why morocco animations delay's */
+.animation-delay:nth-child(9){
+    transition-delay: 20ms;
+    transition: ease-in-out;
+    -webkit-transition: ease-in-out;
+    -moz-transition: ease-in-out;
+    -ms-transition: ease-in-out;
+    -o-transition: ease-in-out;
+}
+
+.animation-delay:nth-child(10){
+    transition-delay: 50ms;
+    transition: ease-in-out;
+    -webkit-transition: ease-in-out;
+    -moz-transition: ease-in-out;
+    -ms-transition: ease-in-out;
+    -o-transition: ease-in-out;
+}
+
+.animation-delay:nth-child(11){
+    transition-delay: 80ms;
+    transition: ease-in-out;
+    -webkit-transition: ease-in-out;
+    -moz-transition: ease-in-out;
+    -ms-transition: ease-in-out;
+    -o-transition: ease-in-out;
+    
+}
+
+.animation-delay:nth-child(12){
+    transition-delay: 100ms;
+    transition: ease-in-out;
+    -webkit-transition: ease-in-out;
+    -moz-transition: ease-in-out;
+    -ms-transition: ease-in-out;
+    -o-transition: ease-in-out;
+}
+
+.animation-delay:nth-child(13){
+    transition-delay: 600ms;
+    
+}
+
+.animation-delay:nth-child(14){
+    transition-delay: 800ms;
+    
+}
+
+/* social networks animations delay's */
+
+.animation-delay:nth-child(16){
+    transition-delay: 200ms;
+    
+}
+
+.animation-delay:nth-child(17){
+    transition-delay: 400ms;
+    
+}
+
+.animation-delay:nth-child(18){
+    transition-delay: 600ms;
+    
+}
+
+.animation-delay:nth-child(19){
+    transition-delay: 800ms;
+    
+}
+
+.animation-delay:nth-child(20){
+    transition-delay: 1000ms;
+    
+}
+
+.animation-delay:nth-child(){
+    transition-delay: ms;
+    
+}
+
+.animation-delay:nth-child(){
+    transition-delay: ms;
+    
+}
