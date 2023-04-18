@@ -2,6 +2,26 @@ body,html{
     padding: 0;
     margin: 0;
 }
+/* style the logo */
+.logo{
+    height: 80px;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+}
+
+/*styling the nav bar*/
+.navbar-nav a{
+    color: black!important;
+    font-weight: bold;
+}
+
+.navbar-nav a:hover {
+    display: inline-block;
+    border-bottom: 3px solid #F27909;
+}
+
+
 
 .CTA { /* styling the button on the navbar */
     background-color: #D9D9D9;
@@ -27,8 +47,9 @@ body,html{
       -o-transform: translateY(-6px);
 }
   }
-
-  .CTA-intro{ /* styling the button on the intoduction section */
+/* styling the button on the intoduction section */
+/*
+  .CTA-intro{ 
     position: absolute;
     font-weight: bold;
     top: 70%;
@@ -43,47 +64,35 @@ body,html{
     box-shadow: 0 0 20px rgba(254, 254, 254, 0.5);
 
 }
+*/
   
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     #navbarToggler { /* reducing the padding in the humburger menu*/
      padding: 12px;
     }
+    .navbar{
+        padding: 12px 0px!important;
+    }
   }
   /* styling the introduction section */
+
 .intoduction {
-    position: relative;
+    background-color: rgba(253, 213, 213, 0.5);
     height: 100vh;
     max-height: 800px;
+    overflow: hidden;
   }
-  
-  .intoduction p {
-    position: absolute;
-    top: 50%;
-    transform: matrix(0, -0.5, 0, 0,0, -50%);
-    background-color: rgba(0, 0, 0, 0.368);
-    padding: 12px ;
-    font-size: 2rem;
-    width: 100%;
-    text-align: center;
-    color: white;
-    z-index: 1;
-    -webkit-transform: matrix(0, -0.5, 0, 0,0, -50%);
-    -moz-transform: matrix(0, -0.5, 0, 0,0, -50%);
-    -ms-transform: matrix(0, -0.5, 0, 0,0, -50%);
-    -o-transform: matrix(0, -0.5, 0, 0,0, -50%);
-}
-  
   .intoduction img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: -1;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+   
   }
- 
+
 
 .secTitle {   /* styling the title of all sections */
         display: inline-block;
@@ -126,6 +135,15 @@ footer{
     padding: 12px 0px;
 }
 @media screen and (max-width: 800px) {
+
+    /*make the introduction picture hide in smaller screens*/
+    .intoduction img{
+        display: none;
+    }
+    .intoduction button{
+        display: block;
+        margin: 22px 0px;
+    }
 
     /* styling the menu in why chose moroco in sreens less than 800px */
     .responsive-WM {  

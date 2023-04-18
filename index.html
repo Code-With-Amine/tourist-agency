@@ -17,21 +17,24 @@
     <title>Tourist Agency</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light m-0 p-0">
         <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarToggler">
-          <a class="navbar-brand" href="#">LOGO</a>
+          <img src="images/logo.png" alt="logo" class="navbar-brand logo">
           <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             <li class="nav-item ">
-              <a class="nav-link ml-lg-3 text-light" href="index.html">Home</a></li>
+              <a class="nav-link ml-lg-3" href="index.html">Home</a></li>
                 <li class="nav-item">
-                    <a class="nav-link ml-lg-4 text-light" href="#severcis">Our severcis</a>
+                    <a class="nav-link ml-lg-4" href="#severcis">Our severcis</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ml-lg-4" href="#severcis">Places to visit</a>
                   </li>
             <li class="nav-item">
-              <a class="nav-link nav-link ml-lg-4 text-light" href="#contact">Contact</a>
+              <a class="nav-link nav-link ml-lg-4" href="#contact">Contact</a>
             </li>
           </ul>
           <div class="d-inline my-2 my-lg-0">
@@ -42,13 +45,24 @@
         </div>
     </div>
       </nav>
-      <section class="intoduction d-flex align-items-center justify-content-center">
-        <p>DISCOVER MOROCCO</p>
+      <section class="intoduction row align-items-center">
+        <div class="col px-5">
+        <h2>LET'S DISCOVER <span class="text-danger"> MOROCCO </span></h2>
+        <p>Don't wait until tomorrow, discover your adventure now 
+          and feel the sensation of closeness to nature around you </p>
+
+      <button class="btn text-light me-5 px-4" type="button" style="background: #7451EB;">Log in</button>
+
         <button class="btn btn-dark text-light my-2 my-sm-0 CTA-intro"
         data-bs-toggle = "modal"
-            data-bs-target="#enrol">Book meeting</button>
+            data-bs-target="#enrol">Want to ask us a Question</button>
 
+
+          </div>
+
+    <div class="col">
         <img src="images/introSection.jpeg" style="overflow: hidden;">
+      </div>
        
       </section>
         <!-- services section -->
@@ -208,33 +222,33 @@
               <div class="col-md-6 offset-md-3">
                 <div class="card">
                   <div class="card-body" id="contact">
-                    <form class="p-2">
+                    <form class="p-2" method="POST" action="php_retrieve_data/index.php">
                       <div class="row">
                       <div class="form-group col-12 col-md-6">
                         <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" name="First_name" required>
                       </div>
 
                       <div class="form-group col-12 col-md-6">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name">
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" name="Last_name" required>
                       </div>
 
                     </div>
                       
                       <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" required>
                       </div>
                       <div class="form-group">
                         <label for="phoneNumber">Phone Number</label>
-                        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
+                        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number" name="phone_number" required>
                       </div>
                       <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea class="form-control" id="message" rows="3"></textarea>
+                        <textarea class="form-control" id="message" rows="3" name="message"></textarea>
                       </div>
-                      <button type="submit" class="btn btn-primary d-block mx-auto">Submit</button>
+                      <button type="submit" class="btn btn-primary d-block mx-auto" name="submit">Submit</button>
                     </form>
                   </div>
                 </div>
