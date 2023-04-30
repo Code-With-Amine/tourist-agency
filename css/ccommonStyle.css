@@ -1,0 +1,17 @@
+/* style the logo */
+.logo , .backwards{
+    height: 80px;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+}
+.radius{
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+.box_shadow{
+    box-shadow: 12px 10px 14px rgb(29, 3, 3);
+}

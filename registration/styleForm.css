@@ -1,0 +1,41 @@
+body{
+    background-color: rgba(11, 111, 118, 0.967);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    background-color: white;
+    padding: 12px 22px;
+    margin-top: 22px;
+    box-shadow: 12px 10px 14px rgb(29, 3, 3);
+ 
+    }
+    input{
+        display: block;
+        border: none;
+        outline: none;
+        border-bottom: 5px solid rgb(147, 147, 147);
+        width: 80%;
+        margin: auto;
+        transition: 1s ease;
+    }
+    input:focus{
+            width: 100%;
+            border-bottom: 5px solid green;
+
+    }
+    input[type="submit"]{
+            border: none;
+            padding: 12px 22px;
+            width: 50%;
+            margin: 0 auto;
+            background-color: rgb(54, 69, 231);
+            color: white;
+    }
+    input[type="submit"]:hover{
+        background-color: aliceblue;
+        border: 3px solid wheat;
+        color: black
+    }

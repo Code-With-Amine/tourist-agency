@@ -51,3 +51,17 @@ function setBackgroung(index){
 function changeImg(src){
         document.getElementById('img').src = src
 }
+
+/* displaying whatssap */
+
+const whatsappIcon = document.querySelector('.whatsapp-icon');
+const messageBox = document.querySelector('.message-box');
+const closeIcon = document.querySelector('.close-icon');
+
+whatsappIcon.addEventListener('click', () => {
+  messageBox.style.display = 'block';
+});
+
+closeIcon.addEventListener('click', () => {
+  messageBox.style.display = 'none';
+});
