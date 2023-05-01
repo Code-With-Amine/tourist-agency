@@ -26,7 +26,7 @@
     <div class="container ">
 
     <nav class="row">
-        <a href="../index.html" class="col-6">
+        <a href="../dashboard.php" class="col-6">
                 <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
 

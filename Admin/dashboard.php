@@ -51,10 +51,10 @@
                 <a class="nav-link py-3 text-center" href="add_services/services.php">Add services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link py-3 text-center" href="#">Places to visite</a>
+                <a class="nav-link py-3 text-center" href="Regional_Adventures/add_cities.php">Regional Adventures</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link py-3 text-center" href="#">social networks</a>
+                <a class="nav-link py-3 text-center" href="social_networks/add.php">social networks</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link py-3 text-center" href="#">settings</a>

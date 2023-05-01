@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/ccommonStyle.css">
     <link rel="stylesheet" href="styleForm.css">
-    <script src="js/animation.js" defer></script>
-
     <!-- add the favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
@@ -29,21 +27,36 @@
     </nav>
 
 <div class="form radius mt-5">        
-      <form action="" method="post">
+      <form action="../php_retrieve_data/admin_data.php" method="post">
+        <?php // show errors
+                if(isset($_GET['err'])){
+                    switch($_GET['err']){
+                        case 1:
+                            echo '<div class="alert alert-danger text-center">Both fields are necessary</div>';
+                            break;
+                        case 2:
+                            echo '<div class="alert alert-danger text-center"> password or log in is wrong </div>';
+                            break;
+                        default:
+                            echo '';
+                    }
+                }
+        ?>
             
             <div class="mb-5">
-                <label for="first-name" class="form-label text-center">Log in:</label>
-                <input type="text" class="" id="first-name" name="first-name"/>
+                <label for="logIn" class="form-label text-center">Log in:</label>
+                <input type="text" class="" id="logIn" name="logIn"/>
             </div>
 
             <div class="mb-5">
-                <label for="first-name" class="form-label text-center">password:</label>
-                <input type="password" class="" id="first-name" name="first-name"/>
+                <label for="password" class="form-label text-center">password:</label>
+                <input type="password" class="" id="password" name="password"/>
             </div>
 
 <div class="mb-5">
         <input type="submit" value="submit" name="submit" class="fw-bold rounded">
 </div>
+
   </form>
   </div>
 </div>
