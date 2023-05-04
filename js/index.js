@@ -1,5 +1,4 @@
 let WmReasons = document.getElementsByClassName('reason')
-
 WmReasons[0].addEventListener('click',()=>{ // Cultural Heritage
 
     setBackgroung(0)
@@ -65,3 +64,4 @@ whatsappIcon.addEventListener('click', () => {
 closeIcon.addEventListener('click', () => {
   messageBox.style.display = 'none';
 });
+

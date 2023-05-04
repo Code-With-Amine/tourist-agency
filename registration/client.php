@@ -1,14 +1,28 @@
+<?php
+require_once '../include/database.php';
+$services = $pdo->query('SELECT * FROM services')->fetchAll(PDO::FETCH_ASSOC); // services array
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+
+  <!-- Bootstrap Select CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css">
+
     <link rel="stylesheet" href="../css/ccommonStyle.css">
     <link rel="stylesheet" href="styleForm.css">
-    <script src="js/animation.js" defer></script>
 
     <!-- add the favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
@@ -21,7 +35,7 @@
     <div class="container ">
 
     <nav class="row">
-        <a href="../index.html" class="col-6">
+        <a href="../index.php" class="col-6">
                 <img src="../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
 
@@ -30,7 +44,7 @@
 
 <div class="form radius">
           <p class="lead text-center my-4 text-success fw-bold">Fill out this form and we will get back to you</p>
-          <form action="" method="post">
+          <form action="../php_retrieve_data/orders.php" method="post">
             
             <div class="mb-5">
                 <label for="first-name" class="form-label text-center">First Name:</label>
@@ -71,6 +85,20 @@
 </div>
 
 <div class="mb-5">
+      <label for="" class="form-label">SELECT SERVICES</label>
+      <select name="services[]" id="services" class="form-control selectpicker" multiple>
+<?php
+    foreach($services as $service){
+?>
+      <option value="<?php echo $service['name']?>"><?php echo $service['name']?></option>
+<?php
+    }
+?>
+      </select>
+    </div>
+
+
+<div class="mb-5">
         <input type="submit" value="submit" name="submit" class="fw-bold rounded">
 </div>
   </form>
@@ -79,6 +107,39 @@
 </div>
     
   <script src="../js/setCountries.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
+  
+  <!-- Bootstrap and jQuery JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Bootstrap Select JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
+  
+  <script>
+$(document).ready(function() {
+  $('#services').selectpicker();
+});
+
+// Add a hidden input for each selected option
+$('#services').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+  if (isSelected) {
+    var selectedOption = $('#services option')[clickedIndex].value;
+    var inputName = 'services_' + selectedOption;
+    var inputValue = selectedOption;
+    var inputHtml = '<input type="hidden" name="' + inputName + '" value="' + inputValue + '">';
+
+    $(this).parent().append(inputHtml);
+  } else {
+    var selectedOption = $('#services option')[clickedIndex].value;
+    var inputName = 'services_' + selectedOption;
+
+    $(this).parent().find('input[name="' + inputName + '"]').remove();
+  }
+});
+
+
+  </script>
 </body>
 </html>

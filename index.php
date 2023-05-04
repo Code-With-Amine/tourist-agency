@@ -1,3 +1,21 @@
+<?php
+require_once 'include/database.php';
+$services = $pdo->query('SELECT * FROM services')->fetchAll(PDO::FETCH_ASSOC); // services array
+$SOCIAL_NETWORKS = $pdo->query('SELECT * FROM social_networks')->fetchAll(PDO::FETCH_ASSOC); // social networks pictures
+$Regional_Adventures = $pdo->query('SELECT * FROM places_to_visite')->fetchAll(PDO::FETCH_ASSOC); // cites that we will visite
+$rows = $pdo->query('SELECT COUNT(*) images from social_networks')->fetch(PDO::FETCH_ASSOC); // number of images in the database
+$social_mediaContact = $pdo->query('SELECT * from social_media order by name desc')->fetchAll(PDO::FETCH_ASSOC);
+
+$youtube = $social_mediaContact[0]['link'];
+$whatsapp = $social_mediaContact[1]['link'];
+$phone = $social_mediaContact[2]['link'];
+$linkedin = $social_mediaContact[3]['link'];
+$instagram = $social_mediaContact[4]['link'];
+$facebook = $social_mediaContact[5]['link'];
+$email  = $social_mediaContact[6]['link'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +23,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/ccommonStyle.css">
     <script src="js/animation.js" defer></script>
@@ -57,8 +76,6 @@
         <button class="btn my-3 my-sm-0 CTA">
           Want to ask us a Question
         </button>
-
-
           </div>
 
     <div class="col">
@@ -73,36 +90,21 @@
          <h2 class="secTitle hidden animation-delay">Our services</h2>
      </div>
      <div class="row mt-5" id="severcis">
-        <!-- aireport pick up card -->
+     <?php
+            foreach($services as $service){
+        ?>
         <div class="col-12 col-md-6 col-lg-4 mb-4 hidden animation-delay">
             <div class="card">
-                <img class="card-img-top" src="images/Aireport.gif" alt="aire port pick up">
+                <img class="card-img-top" src="Admin/add_services/<?php echo $service['image']?>" alt="<?php echo $service['name']?>" style="height:300px;">
                 <div class="card-body">
-                  <p class="card-text">Aireport pick up</p>
+                  <p class="card-text"><?php echo $service['name']?></p>
                 </div>
               </div>
         </div>
 
-           <!-- Organised trips card -->
-           <div class="col-12 col-md-6 col-lg-4 mb-4 hidden animation-delay">
-            <div class="card">
-                <img class="card-img-top" src="images/organised_trips.jpeg" alt="aire port pick up">
-                <div class="card-body">
-                  <p class="card-text">Organised trips</p>
-                </div>
-              </div>
-        </div>
-
-
-                 <!-- Exciting events card -->
-                 <div class="col-12 col-md-6 col-lg-4 mb-4 hidden animation-delay">
-                    <div class="card">
-                        <img class="card-img-top" src="images/Exciting events.jpeg" alt="" style="height: 415px;">
-                        <div class="card-body">
-                          <p class="card-text">Discount for events and Festivals.</p>
-                        </div>
-                      </div>
-                </div>
+        <?php
+            }
+        ?>
 
      </div>
     </section> 
@@ -182,34 +184,55 @@
                 <h2 class="secTitle hidden animation-delay"> SOCIAL NETWORKS </h2>
             </div>
 
-            <div class="row mt-3 g-3">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <img src="images/socials-1.webp" alt="" class="w-100 hidden animation-delay">
-                </div>
+            <div class="row mt-3 g-3 
+            <?php 
+                if($rows['images'] > 0)
+                          echo '';
+                else
+                  echo 'd-none';
 
+            ?>">
+            <?php
+                foreach($SOCIAL_NETWORKS as $imgSrc){
+            ?>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <img src="images/social-2.webp" alt="" class="w-100 hidden animation-delay">
+                    <img src="Admin/social_networks/<?php echo $imgSrc['image']?>" alt="" class="w-100 hidden animation-delay">
                 </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <img src="images/socials-3.webp" alt="" class="w-100 hidden animation-delay">
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <img src="images/socials-4.webp" alt="" class="w-100 hidden animation-delay">
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <img src="images/socails-5.webp" alt="" class="w-100 hidden animation-delay">
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <img src="images/socails-6.webp" alt="" class="w-100 hidden animation-delay">         
-                </div>
+            <?php
+                }
+            ?>                
             </div>
 
         </div>
       </section>
+
+              <!-- Regional Adventures section -->
+     <section class="severcis container ">
+
+<div class="d-flex mt-5"> 
+    <h2 class="secTitle">Regional Adventures</h2>
+</div>
+<div class="row mt-5 justify-content-center" id="severcis">
+<?php
+       foreach($Regional_Adventures as $region){
+   ?>
+   <div class="col-12 col-md-6 col-lg-4 mb-4">
+       <div class="card">
+           <img class="card-img-top" src="Admin/Regional_Adventures/<?php echo $region['image']?>" alt="<?php echo $region['city']?>" style="height:300px;">
+           <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #1237F6;"><?php echo $region['city']?></h5>
+            <p class="card-text">
+            <?php echo $region['description']?>
+            </p>
+          </div>
+   </div>
+   </div>
+   <?php
+       }
+   ?>
+
+
+</section> 
 
       <!-- contact form -->
       <section class="mt-5 hidden">
@@ -219,36 +242,56 @@
         </div>
 
         <div class="container mt-5">
+        <?php
+                          if(isset($_GET['err'])){
+                            switch($_GET['err']){
+                              case 0:
+                                echo '<div class="alert alert-success text-center">We recived youe Inquiry we will contact you soon</div> ';
+                                break;
+                              case 1:
+                                echo '<div class="alert alert-danger text-center">All fields are necessary Please fill them out</div>';
+                                break;
+                              case 2:
+                                echo '<div class="alert alert-danger text-center">An inquiry with the same email or WhatsApp number already exists.</div>';
+                                break;
+                            }
+                          }
+                    ?>
             <div class="row">
               <div class="col-md-6 offset-md-3">
                 <div class="card">
                   <div class="card-body" id="contact">
-                    <form class="p-2" method="POST" action="php_retrieve_data/index.php">
+                    <form onsubmit="return isItValide()" class="p-2" method="POST" action="php_retrieve_data/inquiries.php">
                       <div class="row">
                       <div class="form-group col-12 col-md-6">
                         <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" name="First_name" required>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" name="First_name" value="<?php echo isset($_GET['fname'])?$_GET['fname']:'' ?>" required>
                       </div>
 
                       <div class="form-group col-12 col-md-6">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" name="Last_name" required>
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" name="Last_name" value="<?php echo isset($_GET['lname'])?$_GET['lname']:'' ?>" required>
                       </div>
-
                     </div>
                       
                       <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" required>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" value="<?php echo isset($_GET['lname'])?$_GET['lname']:'' ?>" required>
                       </div>
                       <div class="form-group">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number" name="phone_number" required>
+                        <label for="phoneNumber">Whatsapp Number (Please add you contry code)</label>
+                        <input type="tel" class="form-control" id="phoneNumber" placeholder="EX: +1-202-555-0108" name="whatsapp_number" value="<?php echo isset($_GET['whatsapp'])?$_GET['whatsapp']:'' ?>" required>                      
                       </div>
+
                       <div class="form-group">
                         <label for="message">Write your Inquiry</label>
-                        <textarea class="form-control" id="message" rows="3" name="Inquiry"></textarea>
-                      </div>
+                        <textarea class="form-control" id="message" rows="3" name="Inquiry"><?php echo isset($_GET['inquiry'])?$_GET['inquiry']:'' ?></textarea>
+                        <div class="alert  alert-info alert-dismissible fade show mt-4" role="alert">
+                        Notice that you are only allowed to write up to 4000 character :
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  <p id="chars"></p>
+                  </div>
                       <button type="submit" class="btn btn-primary d-block mx-auto" name="submit">Submit</button>
                     </form>
                   </div>
@@ -264,9 +307,12 @@
         <div class="container">
           <div class="row d-flex align-items-center justify-content-center text-center">
             <div class="col-12 col-md-4 mb-4 mb-md-0">
-              <p><i class="fa-regular fa-envelope" style="color: #146aff;"></i> example@gmail.com</p>
-              <p><i class="fa-sharp fa-solid fa-phone" style="color: #146aff;"></i> +212 0000000000</p>
-              <p><i class="fa-solid fa-location-dot" style="color: #1f71ff;"></i> Casablanca, Morocco</p>
+            <div class="d-flex align-items-start flex-column">
+              <a href="mailto:<?php echo $email ?>" class="btn text-light"><i class="fa-regular fa-envelope" style="color: #146aff;"></i> <?php echo $email ?></a>
+              <a href="" class="btn text-light"><i class="fa-sharp fa-solid fa-phone" style="color: #146aff;"></i> <?php echo $phone?></a>
+              <a href="https://earth.google.com/web/search/Ida/@29.83671161,-9.01945308,1431.5860287a,172.48593294d,35y,172.12592996h,0t,0r/data=CigiJgokCcdajbnAVTRAEcRajbnAVTTAGdG53e-hJElAIbo2HSUAz0nA"
+               class="btn text-light" target="_blank"><i class="fa-solid fa-location-dot" style="color: #1f71ff;"></i> Agadir, Morocco</a>
+              </div>      
             </div>
       
             <div class="col-12 col-md-4 mb-4 mb-md-0">
@@ -274,9 +320,10 @@
             </div>
       
             <div class="col-12 col-md-4 d-flex justify-content-center">
-              <a href="#"><i class="fa-brands fa-youtube me-4" style="color: #c81609;font-size: 3rem;"></i></a>
-              <a href="#"><i class="fa-brands fa-square-instagram me-4" style="color: #e00b7c;font-size: 3rem;"></i></a>
-              <a href="#"><i class="fa-brands fa-facebook me-4" style="color: #216ae8;font-size: 3rem;"></i></a>
+              <a href="<?php echo $youtube?>" target="_blank"><i class="fa-brands fa-youtube me-4" style="color: #c81609;font-size: 2.3rem;"></i></a>
+              <a href="<?php echo $instagram?>" target="_blank"><i class="fa-brands fa-instagram me-4" style="color: #e00b7c;font-size: 2.3rem;"></i></a>
+              <a href="<?php echo $facebook?>" target="_blank"><i class="fa-brands fa-facebook me-4" style="color: #216ae8;font-size: 2.3rem;"></i></a>
+              <a href="<?php echo $linkedin?>" target="_blank"><i class="fa-brands fa-linkedin" style="color: #216ae8;font-size: 2.3rem;"></i></a>
             </div>
           </div>
         </div>
@@ -288,7 +335,7 @@
   <div class="message-box whatsap-shadow whatsapp-rounded">
     <div class="close-icon">&times;</div>
     <img src="images/whatssap chat.jpg" alt="whatsapp-icon" class="whatsapp-rounded">
-    <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=<?php echo $whatsapp?>" target="_blank">
       <button class="chat-btn btn btn-success whatsapp-rounded">Chat Now</button>
     </a>
   </div>
@@ -296,6 +343,7 @@
       
 
     <script src="js/index.js"></script>
+    <script src="js/validateInputs.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

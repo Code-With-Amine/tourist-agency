@@ -5,7 +5,7 @@ $password = $pdo->query('SELECT password FROM admin')->fetch(PDO::FETCH_ASSOC);
 
 if(isset($_POST['submit'])){
     if(!empty($_POST['password']) && !empty($_POST['logIn'])){
-            if( $_POST['password'] === $password['password'] && $_POST['logIn'] === $logIN['login']){
+            if(password_verify($_POST['password'], $password['password']) && $_POST['logIn'] === $logIN['login']){
                 
                 header('location:../Admin/dashboard.php');
 

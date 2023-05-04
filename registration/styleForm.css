@@ -1,5 +1,6 @@
+
 body{
-    background-color: rgba(11, 111, 118, 0.967);
+    background-color: #e3f2fd;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +8,7 @@ body{
 
 .form{
     background-color: white;
-    padding: 12px 22px;
+    padding: 18px 22px;
     margin-top: 22px;
     box-shadow: 12px 10px 14px rgb(29, 3, 3);
  

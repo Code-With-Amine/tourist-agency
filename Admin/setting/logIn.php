@@ -1,3 +1,9 @@
+<?php
+    require_once '../../include/database.php';
+    $services = $pdo->query('select * from services')->fetchAll(PDO::FETCH_ASSOC);
+    $row_count = $pdo->query('select count(*) as offers FROM services')->fetch(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,70 +20,62 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
-    <title>UPDATE CITY</title>
+    <title>Change Log In</title>
 </head>
 <body>
     <div class="container ">
 
     <nav class="row">
-        <a href="add_cities.php" class="col-6">
+        <a href="../dashboard.php" class="col-6">
                 <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
 
         <img src="../../images/logo.png" alt="logo" class="col-6 logo">
     </nav>
-<h2 class="text-center mt-4">ADD A CITY</h2>
+<h2 class="text-center mt-4">Change Your Log In</h2>
 
-<form  action="updates/setUpdates.php?id=<?php echo $_GET['id']?>&path=<?php echo $_GET['path']?>" method="post" class="shadow px-5 py-3 rounded" enctype="multipart/form-data">
+<form action="setNewLogIn.php" method="post" class="shadow px-5 py-3 rounded">
 
 <?php
 // show error messages
 if(isset($_GET['err'])){
     switch($_GET['err']){
-            case 1:
-                echo '<div class="alert alert-danger"> all filleds are necessary </div>';
-                break;
-            case 2:
-                echo '<div class="alert alert-danger">Description must not be above 250 character</div>';
-                break;
-
+        case 1:
+            echo '<div class="alert alert-danger">All fields are necessary</div>';
+            break;
+        case 2:
+            echo '<div class="alert alert-danger">Your current Log in is wrong </div>';
+            break;
+        case 3:
+            echo '<div class="alert alert-danger">Your new Log in is too short it must contain at least 5 characters </div>';
+            break;
+        case 4:
+            echo '<div class="alert alert-success"> successfully login changed</div>';
     }
-}
-if(isset($_GET['error'])){
-    echo $_GET['error'];
 }
 ?>
 
 <div class="mt-5">
-    
-    <label for="" >Upload Image</label>
-  <input type="file" class="form-control" name="file" value="<?php echo $_GET['path']?>">
-  </div>
 
     <div class="mt-5">
-    <label for="">City name</label>
-    <input type="text" class="form-control" name="city" id="service" value="<?php echo $_GET['city']?>">
+        <label for="">Current Log In</label>
+        <input type="text" class="form-control" name="current_logIn" id="" value="<?php echo isset($_GET['currLogin'])? $_GET['currLogin']:''?>">
+  </div>
+
+
+    <div class="mt-5">
+    <label for="">New Log In</label>
+    <input type="text" class="form-control" name="new_logIn" id="" value="<?php echo isset($_GET['newLogin'])? $_GET['newLogin']:''?>">
   </div>
 
   <div class="mt-5">
-    <label for="">Description</label>
-    <textarea class="form-control" name="description" id="description"><?php 
-    echo trim($_GET['description']);
-    ?></textarea>
-
-    <p class="text-secondary">Max 250 character</p>
-    <p id="char"></p>
-  </div>
-
-  <div class="mt-5">
-  <input type="submit" class="btn btn-primary d-block mx-auto" name="update">
+  <input type="submit" class="btn btn-primary d-block mx-auto" name="submit" onclick="return confirm('Are you sure you want to change your Log In')">
     </div>
 
 </form>  
 
 </div>
 
-<script src="../js/checkInputs.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>
 </html>

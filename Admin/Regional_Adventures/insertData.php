@@ -4,7 +4,7 @@ require_once '../../include/database.php';
 if(isset($_POST['submit'])){
 
     if(isset($_FILES['file']) && $_FILES['file']['size'] > 0 && !empty($_POST['city']) && !empty($_POST['description'])){
-            if(strlen($_POST['description']) > 250){
+            if(strlen($_POST['description']) > 400){
                 header('location:add_cities.php?err=2&city='.$_POST['city'].'&description'.$_POST['description']);
             }
             else{

@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
-    <title>ADMIN</title>
+    <title>ADD CITY</title>
 </head>
 <body>
     <div class="container ">
@@ -45,7 +45,7 @@ if(isset($_GET['err'])){
                 echo '<div class="alert alert-danger"> all filleds are necessary </div>';
                 break;
             case 2:
-                echo '<div class="alert alert-danger">Description must not be above 250 character</div>';
+                echo '<div class="alert alert-danger">Description must not be above 400 character</div>';
                 break;
 
     }
@@ -70,7 +70,7 @@ if(isset($_GET['error'])){
     <label for="">Description</label>
     <textarea class="form-control" name="description" id="description"></textarea>
 
-    <p class="text-secondary">Max 250 character</p>
+    <p class="text-secondary">Max 400 character</p>
     <p id="char"></p>
   </div>
 
@@ -83,7 +83,7 @@ if(isset($_GET['error'])){
 </div>
 
 <!-- update or delete a place -->
-<table class="table table-striped table-responsive-sm mt-5">
+<table class="table table-striped table-responsive-sm mt-5" style="max-width: 1000px;">
         <thead>
             <tr>
                 <th>City name</th>
@@ -104,9 +104,9 @@ if(isset($_GET['error'])){
                                 <th><?php echo $place['description']?></th>
                                 <td><?= $place['creation_date'] ?></td>
                                 <td>
-                                    <a href="update.php?id=<?php echo $place['id']?>&city=<?php echo $place['city']?>&path=<?php echo $place['image']?>&description=<?php echo $place['description']?>" class="btn btn-primary">Update</a>
+                                    <a href="update.php?id=<?php echo $place['id']?>&city=<?php echo $place['city']?>&path=<?php echo $place['image']?>&description=<?php echo $place['description']?>&id=<?php echo $place['id']?>" class="btn btn-primary">Update</a>
 
-                                    <a href="delete.php?Path=<?php echo $place['image']?>&id=<?php echo $place['id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete <?php echo $place['city']?>?')" name="delete">Delete</a>
+                                    <a href="delete.php?Path=<?php echo $place['image']?>&id=<?php echo $place['id'] ?>" class="btn btn-danger mt-4" onclick="return confirm('Are you sure you want to delete <?php echo $place['city']?>?')" name="delete">Delete</a>
 
                                 </td>
                             </tr>

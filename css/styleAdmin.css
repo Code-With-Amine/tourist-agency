@@ -5,6 +5,10 @@ html,body{
     background-color: #D9D9D9;
     height: 100%;
 }
+.Dashboard_icons{
+    height: 140px;
+    width: 100%;
+}
 
 a{
     text-decoration: none;
@@ -35,13 +39,53 @@ section:nth-child(1){
     -o-transform: translatey(-20%);
     
 }
-
+.navbar-nav > li{
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
 .navbar-nav > li:hover{
-    background-color: bisque;
-    display: block;
+    color: #0E31E9;
+    font-weight: bolder;
 }
 
 /* creating a card */
 .card{
-    background-color: white
+    background-color: white;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.pending , .seen{
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    color: white;
+    padding: 8px 10px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+.pending{
+    background-color: rgb(230, 156, 18)!important;
+}
+.seen{
+    background-color: #518ADF!important;
+}
+
+.tr td,th{
+    padding: 10px;
+}
+
+.card img{
+    border-radius: 22px;
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    -ms-border-radius: 22px;
+    -o-border-radius: 22px;
+}
+
+.Dashboard_desc{
+    font-size: 1rem;
 }
