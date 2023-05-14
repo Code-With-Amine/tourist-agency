@@ -2,6 +2,7 @@
 body{
     background-color: #e3f2fd;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -11,8 +12,9 @@ body{
     padding: 18px 22px;
     margin-top: 22px;
     box-shadow: 12px 10px 14px rgb(29, 3, 3);
- 
+     
     }
+
     input{
         display: block;
         border: none;
@@ -39,4 +41,8 @@ body{
         background-color: aliceblue;
         border: 3px solid wheat;
         color: black
+    }
+
+    .icon{
+        font-size: 42px;
     }

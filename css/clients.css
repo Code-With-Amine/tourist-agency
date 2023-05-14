@@ -1,5 +1,3 @@
-
-
 .wrap_client{
     margin: 30px auto;
     border: 3px solid black;
@@ -41,3 +39,4 @@ border-top: 1px solid #ddd;
 .panel-default > .panel-body:last-child {
 border-bottom: none;
 }
+

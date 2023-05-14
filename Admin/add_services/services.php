@@ -56,7 +56,7 @@ if(isset($_GET['error'])){
   </div>
 
   <div class="mt-5">
-  <input type="submit" class="btn btn-primary d-block mx-auto" name="submit">
+  <input type="submit" class="btn btn-primary d-block mx-auto" name="submit" value="submit">
     </div>
 
 </form>  

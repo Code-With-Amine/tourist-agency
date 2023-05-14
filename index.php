@@ -3,6 +3,7 @@ require_once 'include/database.php';
 $services = $pdo->query('SELECT * FROM services')->fetchAll(PDO::FETCH_ASSOC); // services array
 $SOCIAL_NETWORKS = $pdo->query('SELECT * FROM social_networks')->fetchAll(PDO::FETCH_ASSOC); // social networks pictures
 $Regional_Adventures = $pdo->query('SELECT * FROM places_to_visite')->fetchAll(PDO::FETCH_ASSOC); // cites that we will visite
+$comments = $pdo->query('SELECT com.id, cl.id as clientID, first_name, last_name, country, date, stars, comment  FROM comments com, clients cl WHERE com.client_id = cl.id')->fetchAll(PDO::FETCH_ASSOC); // the client comments
 $rows = $pdo->query('SELECT COUNT(*) images from social_networks')->fetch(PDO::FETCH_ASSOC); // number of images in the database
 $social_mediaContact = $pdo->query('SELECT * from social_media order by name desc')->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,6 +26,7 @@ $email  = $social_mediaContact[6]['link'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/ccommonStyle.css">
     <script src="js/animation.js" defer></script>
@@ -46,12 +48,12 @@ $email  = $social_mediaContact[6]['link'];
           <img src="images/logo.png" alt="logo" class="navbar-brand logo">
           <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             <li class="nav-item ">
-              <a class="nav-link ml-lg-3" href="index.html">Home</a></li>
+              <a class="nav-link ml-lg-3" href="#">Home</a></li>
                 <li class="nav-item">
                     <a class="nav-link ml-lg-4" href="#severcis">Our severcis</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link ml-lg-4" href="#severcis">Places to visit</a>
+                    <a class="nav-link ml-lg-4" href="#Regional_Adventures">Places to visit</a>
                   </li>
             <li class="nav-item">
               <a class="nav-link nav-link ml-lg-4" href="#contact">Contact</a>
@@ -71,12 +73,12 @@ $email  = $social_mediaContact[6]['link'];
         <p>Don't wait until tomorrow, discover your adventure now 
           and feel the sensation of closeness to nature around you </p>
 
-      <a href="registration/client.php" class="btn text-light me-5 px-4 mb-3 fw-bold" type="button" style="background: #7451EB;">Start your journey</a>
+      <a href="registration/client.php" class="btn text-light me-5 mt-3 px-4 mb-3 fw-bold" type="button" style="background: #7451EB;">Start your journey</a>
 
-        <button class="btn my-3 my-sm-0 CTA">
+        <a href="#contact" role="button" class="btn my-3 my-sm-0 CTA">
           Want to ask us a Question
-        </button>
-          </div>
+        </a>
+        </div>
 
     <div class="col">
         <img src="images/introSection.jpeg" style="overflow: hidden;">
@@ -89,7 +91,7 @@ $email  = $social_mediaContact[6]['link'];
      <div class="d-flex mt-5"> 
          <h2 class="secTitle hidden animation-delay">Our services</h2>
      </div>
-     <div class="row mt-5" id="severcis">
+     <div class="row mt-5 mx-auto justify-content-center" id="severcis">
      <?php
             foreach($services as $service){
         ?>
@@ -177,21 +179,21 @@ $email  = $social_mediaContact[6]['link'];
       </section>
 
       <!-- SOCIAL NETWORKS section -->
-      <section class="mt-5 py-5" style="background-color: #C8D4E3;">
+      <section class="mt-5 py-5         
+          <?php 
+                if($rows['images'] > 0)
+                          echo '';
+                else
+                  echo 'd-none';
+
+            ?>" style="background-color: #C8D4E3;">
         <div class="container">
             
             <div class="d-flex mt-5"> 
                 <h2 class="secTitle hidden animation-delay"> SOCIAL NETWORKS </h2>
             </div>
 
-            <div class="row mt-3 g-3 
-            <?php 
-                if($rows['images'] > 0)
-                          echo '';
-                else
-                  echo 'd-none';
-
-            ?>">
+            <div class="row mt-3 g-3 justify-content-center">
             <?php
                 foreach($SOCIAL_NETWORKS as $imgSrc){
             ?>
@@ -207,17 +209,17 @@ $email  = $social_mediaContact[6]['link'];
       </section>
 
               <!-- Regional Adventures section -->
-     <section class="severcis container ">
+     <section class="container ">
 
 <div class="d-flex mt-5"> 
-    <h2 class="secTitle">Regional Adventures</h2>
+    <h2 class="secTitle scale" id="Regional_Adventures">Regional Adventures</h2>
 </div>
 <div class="row mt-5 justify-content-center" id="severcis">
 <?php
        foreach($Regional_Adventures as $region){
    ?>
    <div class="col-12 col-md-6 col-lg-4 mb-4">
-       <div class="card">
+       <div class="card scale">
            <img class="card-img-top" src="Admin/Regional_Adventures/<?php echo $region['image']?>" alt="<?php echo $region['city']?>" style="height:300px;">
            <div class="card-body">
             <h5 class="card-title fw-bold" style="color: #1237F6;"><?php echo $region['city']?></h5>
@@ -233,6 +235,59 @@ $email  = $social_mediaContact[6]['link'];
 
 
 </section> 
+<!-- client comments -->
+<section class="setBackground 
+      <?php 
+                if(count($comments) > 0)
+                      echo '';
+                else
+                      echo 'd-none';
+?>">
+  <div class="container">
+<div class="d-flex mt-5"> 
+         <h2 class="secTitle scale mb-4">WHAT TOURIST SAY <span style="color: orange;">ABOUT US</span></h2>
+     </div>
+    <div class="row g-5 justify-content-center align-items-center">
+
+    <div class="col-12 col-sm-6 scale">
+    <?php 
+        $cardNumbers = 1;
+        foreach($comments as $comment){
+    ?>
+                <div class="comment card-<?php echo $cardNumbers++ ?> radius shadow p-5">
+                      <cite class="fw-bold">"<?php echo $comment['comment']?>"</cite>
+                      <!-- rating  -->
+                      <div class="pt-3">
+                            <?php
+                                $starsRate = $comment['stars'];
+                                for($i = 0 ; $i < 5 ; $i++){
+                                    if($starsRate > 0){
+                                        echo '<i class="bi bi-star-fill"></i>';
+                                        $starsRate--;
+                                    }else{
+                                      echo '<i class="bi bi-star"></i>';
+                                    }
+                                }
+                            ?>
+                      </div>
+                        <h4 class="py-2"><?php echo ucfirst($comment['first_name'])?> <?php echo ucfirst($comment['last_name'])?> </h4>
+                      <div>
+                        <p><?php echo $comment['country']?></p>
+                      <div class="arrow arrow-left"><i class="bi bi-arrow-left-circle-fill"></i></div>
+                      <div class="arrow arrow-right"><i class="bi bi-arrow-right-circle-fill"></i></div>
+                      </div>
+                      
+              </div>
+      <?php
+        }
+      ?>
+        </div>
+
+        <img src="images/commentsSecImg.png" alt="comment section image" class="col-12 col-sm-5 offset-1 scale"/>
+
+    </div>
+    </div>
+</section>
 
       <!-- contact form -->
       <section class="mt-5 hidden">
@@ -343,6 +398,7 @@ $email  = $social_mediaContact[6]['link'];
       
 
     <script src="js/index.js"></script>
+    <script src="js/displayCards.js"></script>
     <script src="js/validateInputs.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

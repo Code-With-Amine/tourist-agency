@@ -6,6 +6,9 @@
     <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="../css/ccommonStyle.css">
     <link rel="stylesheet" href="styleForm.css">
     <!-- add the favicon -->
@@ -16,8 +19,7 @@
     <title>ADMIN</title>
 </head>
 <body>
-    <div class="container ">
-
+<div class="container" style="max-width: 800px;">
     <nav class="row">
         <a href="../index.php" class="col-6">
                 <img src="../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
@@ -45,12 +47,18 @@
             
             <div class="mb-5">
                 <label for="logIn" class="form-label text-center">Log in:</label>
-                <input type="text" class="" id="logIn" name="logIn"/>
+                <div class="d-flex gap-3">
+                        <i class="icon bi bi-box-arrow-in-right"></i>
+                        <input type="text" class="" id="logIn" name="logIn"/>
+                </div>
             </div>
 
             <div class="mb-5">
                 <label for="password" class="form-label text-center">password:</label>
-                <input type="password" class="" id="password" name="password"/>
+                <div class="d-flex gap-3">
+                        <i class="icon fa-solid fa-key"></i>
+                        <input type="password" class="" id="password" name="password"/>
+                </div>
             </div>
 
 <div class="mb-5">
@@ -61,7 +69,6 @@
   </div>
 </div>
 </div>
-    
   <script src="../js/setCountries.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>

@@ -1,8 +1,6 @@
 <?php
 require_once '../include/database.php';
 
-
-
     if(isset($_POST['submit'])){
             if(!empty($_POST['First_name']) && !empty($_POST['Last_name']) && !empty($_POST['email']) && !empty($_POST['whatsapp_number']) && !empty($_POST['Inquiry'])){
                     $first_name = $_POST['First_name'];

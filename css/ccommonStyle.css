@@ -16,3 +16,20 @@
 .box_shadow{
     box-shadow: 12px 10px 14px rgb(29, 3, 3);
 }
+.display-order{
+    background-color: rgba(255, 255, 255, 0.913);
+    max-width: 900px;
+}
+.display-order p{
+    font-weight: bold;
+}
+.display-order span{
+    color: blue;
+}
+.body{
+    background-color: rgb(206, 204, 202);
+}
+.tr,.tr-orders td,th{
+    padding: 10px;
+}
+

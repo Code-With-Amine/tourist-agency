@@ -89,7 +89,7 @@ if(isset($_GET['error'])){
   </div>
 
   <div class="mt-5">
-  <input type="submit" class="btn btn-primary d-block mx-auto" name="update">
+  <input type="submit" class="btn btn-primary d-block mx-auto" name="update" value="submit">
     </div>
 </form>  
 

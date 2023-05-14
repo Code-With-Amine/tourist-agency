@@ -1,12 +1,12 @@
 html,body{
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     background-color: #D9D9D9;
     height: 100%;
 }
 .Dashboard_icons{
-    height: 140px;
+    height: 100%;
     width: 100%;
 }
 
@@ -19,9 +19,7 @@ a:hover{
     color: black;
 }
 
-section:nth-child(1){
-    background-color: #518ADF;
-}
+
 
 /* styling the ddashboard navBar */
 .dashboard_navBar img{
@@ -31,13 +29,8 @@ section:nth-child(1){
 
 .dashboard_navBar {
     background-color: #F9F7F7;
-    height: 100vh;
-    transform: translatey(-20%);
-    -webkit-transform: translatey(-20%);
-    -moz-transform: translatey(-20%);
-    -ms-transform: translatey(-20%);
-    -o-transform: translatey(-20%);
-    
+    min-height: 100vh;
+    max-height: 1000px;
 }
 .navbar-nav > li{
     font-weight: bold;
@@ -45,7 +38,7 @@ section:nth-child(1){
 }
 .navbar-nav > li:hover{
     color: #0E31E9;
-    font-weight: bolder;
+    font-weight: 2rem;
 }
 
 /* creating a card */
@@ -74,11 +67,9 @@ section:nth-child(1){
     background-color: #518ADF!important;
 }
 
-.tr td,th{
-    padding: 10px;
-}
-
 .card img{
+    display: block;
+    margin-bottom: -12px;
     border-radius: 22px;
     -webkit-border-radius: 22px;
     -moz-border-radius: 22px;
@@ -87,5 +78,13 @@ section:nth-child(1){
 }
 
 .Dashboard_desc{
-    font-size: 1rem;
+    font-size: 0.9rem;
+    height: 100%;
+}
+
+.statistics{
+    height: 100px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }

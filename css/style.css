@@ -406,3 +406,46 @@ footer{
     width: 100%;
 
   }
+
+  /* create the animation on scrolling for the regional advanture section*/
+.Make_it_scale {
+    animation-name: scale;
+    animation-duration: 1.6s;
+  }
+  
+  @keyframes scale {
+   from{transform: scale(0,0); opacity: 0.3;}
+   to{transform: scale(1,1);opacity: 1;}
+  }
+
+  /* styling the comments section  */
+
+  .comment {
+    position: relative;
+    background-color: orange;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: justify;
+    height: fit-content;
+  }
+  
+  .arrow {
+    position: absolute;
+    display: inline-block;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .arrow-left {
+    left: 20px;
+  }
+  
+  .arrow-right {
+    right: 20px;
+  }
+  
+  .hideComment {
+    display: none;
+  }
