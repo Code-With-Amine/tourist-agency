@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
 
 function updateImageDest($destination, $id, $pdo){
        $query = $pdo->prepare('UPDATE social_networks SET image = ? WHERE id = ?;');
@@ -99,3 +103,4 @@ if(isset($error)){
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php } ?>

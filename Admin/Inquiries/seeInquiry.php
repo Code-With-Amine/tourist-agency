@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
 if(isset($_GET['client'])){
   include_once '../../include/database.php';
   require_once 'common_functions.php';
@@ -16,6 +20,7 @@ if(isset($_GET['client'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.grid.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/ccommonStyle.css">
     <link rel="stylesheet" href="../../css/client.css">
@@ -32,9 +37,20 @@ if(isset($_GET['client'])){
     <div class="container ">
 
     <nav class="row">
-        <a href="../dashboard.php" class="col-6">
+        <a href="../dashboard.php" class="col-5">
                 <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
+                                 <!-- Translation Code here -->
+					<span class="translate col-5 mt-3">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+					<!-- Translation Code End here -->
     </nav>
     <div class="container wrap_client box_shadow mt-5">
    <span>
@@ -80,5 +96,7 @@ if(isset($_GET['client'])){
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script></body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
 </html>
+<?php } ?>

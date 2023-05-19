@@ -1,5 +1,9 @@
 <?php
     include_once '../../include/database.php';
+    session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
     $clients = $pdo->query('SELECT * FROM clients order by dateOfComing')->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <head>
@@ -7,24 +11,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../css/styleAdmin.css">
     <link rel="stylesheet" href="../../css/ccommonStyle.css">
+    <link rel="stylesheet" href="../../css/styleAdmin.css">
+    
     
     <!-- add the favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
-    <title>Order</title>
+    <title>Clients</title>
 </head>
 <body class="body">
 
 <div class="container ">
 
-<nav>
-    <a href="../dashboard.php" >
+<nav class="row align-items-center">
+    <a href="../dashboard.php" class="col">
             <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
     </a>
 </nav>
@@ -101,3 +107,4 @@
 
 <script src="../js/searchClients.js"></script>
 </body>
+<?php } ?>

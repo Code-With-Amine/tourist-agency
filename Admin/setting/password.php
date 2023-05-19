@@ -1,5 +1,11 @@
 <?php
-    require_once '../../include/database.php';
+session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
+
+require_once '../../include/database.php';
+
     $services = $pdo->query('select * from services')->fetchAll(PDO::FETCH_ASSOC);
     $row_count = $pdo->query('select count(*) as offers FROM services')->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -86,3 +92,4 @@ if(isset($_GET['err'])){
 
 </body>
 </html>
+<?php } ?>

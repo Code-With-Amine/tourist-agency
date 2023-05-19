@@ -1,7 +1,8 @@
 <?php
 
-require_once '../../include/database.php';
 if(isset($_POST['submit'])){
+
+    require_once '../../include/database.php';
 
     if(isset($_FILES['file']) && $_FILES['file']['size'] > 0 && !empty($_POST['city']) && !empty($_POST['description'])){
             if(strlen($_POST['description']) > 400){
@@ -35,10 +36,10 @@ if(isset($_POST['submit'])){
                             
                                 // send data to the data base
                                 $date = date("Y-m-d");
-                                $sqlState = $pdo->prepare('INSERT places_to_visite(image, description, creation_date, city) VALUES (?, ?, ?, ?)');
-                                $sqlState->execute([$fileDestination, $_POST['description'], $date, $city_name]);
+                                $sqlState = $pdo->prepare('INSERT places_to_visite(image, description, creation_date, city, Location) VALUES (?, ?, ?, ?, ?)');
+                                $sqlState->execute([$fileDestination, $_POST['description'], $date, $city_name , $_POST['Location']]);
                                 
-                            header('location: add_cities.php?uploadSuccess');
+                            header('location: add_cities.php');
                         }else{
                             $error = '<div class="alert-danger p-4 m-4"> there was an error uploading your img! </div>';
                             header('location: add_cities.php?error=' . urlencode($error));

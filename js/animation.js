@@ -17,7 +17,6 @@ const observer2 = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         // checking if the element is Intersecting the viewport
         if(entry.isIntersecting){
-            console.log('Element is intersecting!');
             entry.target.classList.add('Make_it_scale')
         }
     } )

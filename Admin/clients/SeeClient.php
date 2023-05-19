@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
     include_once '../../include/database.php';
     include_once '../Inquiries/common_functions.php';
     $client = json_decode(urldecode($_GET['client']), true);
@@ -11,8 +15,9 @@
     <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/ccommonStyle.css">
     <link rel="stylesheet" href="../../css/client.css">
+    <link rel="stylesheet" href="../../css/ccommonStyle.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -23,16 +28,27 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
-    <title>Order</title>
+    <title>Client</title>
 </head>
 <body class="body">
 
 <div class="container ">
 
-<nav>
-    <a href="All_clients.php">
+<nav class="row align-items-center">
+    <a href="All_clients.php" class="col">
             <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
     </a>
+     <!-- Translation Code here -->
+      <span class="translate col">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+					<!-- Translation Code End here -->
 </nav>
 
 <div class="display-order box_shadow radius mx-auto p-4 mb-5">
@@ -168,3 +184,4 @@
 </main>
     </div>
 </body>
+<?php } ?>

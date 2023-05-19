@@ -1,5 +1,6 @@
 <?php
 require_once '../../include/database.php';
+
     if(isset($_GET['order'])){
         $client =  json_decode(urldecode($_GET['order']), true); 
         $date = date('y-m-d');
@@ -34,8 +35,8 @@ require_once '../../include/database.php';
             // delete the order
             $sqlSate = $pdo->prepare('DELETE FROM orders WHERE id = ?');
             $sqlSate->execute([$client['id']]);
-
-            header('location: All_clients.php');
+//            echo $sqlSate;
+           header('location: All_clients.php');
 
         }
 

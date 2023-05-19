@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
     include_once '../../include/database.php';
     include_once '../Inquiries/common_functions.php';
     $order = json_decode(urldecode($_GET['order']), true);
@@ -11,9 +15,10 @@
     <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/ccommonStyle.css">
     <link rel="stylesheet" href="../../css/client.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../css/ccommonStyle.css">
+
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/d83f7e2869.js" crossorigin="anonymous"></script>
@@ -29,10 +34,21 @@
 
 <div class="container ">
 
-<nav>
-    <a href="../dashboard.php" >
+<nav class="row">
+    <a href="../dashboard.php" class="col">
             <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
     </a>
+                <!-- Translation Code here -->
+                <span class="translate col mt-3">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+					<!-- Translation Code End here -->
 </nav>
 
     <main class="display-order box_shadow radius mx-auto pb-4">
@@ -116,8 +132,9 @@
             ?>
 </main>
 
-        <a href="../clients/insetClient.php?order=<?php echo urlencode(json_encode($order))?>" role="button" class="d-block mx-auto btn btn-primary w-25 m-3" onclick="return confirm('Do you understand that after moving this personne to the client part it will be delete from the orders')">
+        <a href="../clients/insetClient.php?order=<?php echo urlencode(json_encode($order))?>" role="button" class="d-block mx-auto btn btn-primary w-25 m-3" onclick="return confirm('Do you understand that after moving this person to the clients part it will be delete from the orders')">
         Move it as a client
         </a>
     </div>
 </body>
+<?php } ?>

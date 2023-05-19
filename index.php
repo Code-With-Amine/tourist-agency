@@ -1,20 +1,5 @@
 <?php
-require_once 'include/database.php';
-$services = $pdo->query('SELECT * FROM services')->fetchAll(PDO::FETCH_ASSOC); // services array
-$SOCIAL_NETWORKS = $pdo->query('SELECT * FROM social_networks')->fetchAll(PDO::FETCH_ASSOC); // social networks pictures
-$Regional_Adventures = $pdo->query('SELECT * FROM places_to_visite')->fetchAll(PDO::FETCH_ASSOC); // cites that we will visite
-$comments = $pdo->query('SELECT com.id, cl.id as clientID, first_name, last_name, country, date, stars, comment  FROM comments com, clients cl WHERE com.client_id = cl.id')->fetchAll(PDO::FETCH_ASSOC); // the client comments
-$rows = $pdo->query('SELECT COUNT(*) images from social_networks')->fetch(PDO::FETCH_ASSOC); // number of images in the database
-$social_mediaContact = $pdo->query('SELECT * from social_media order by name desc')->fetchAll(PDO::FETCH_ASSOC);
-
-$youtube = $social_mediaContact[0]['link'];
-$whatsapp = $social_mediaContact[1]['link'];
-$phone = $social_mediaContact[2]['link'];
-$linkedin = $social_mediaContact[3]['link'];
-$instagram = $social_mediaContact[4]['link'];
-$facebook = $social_mediaContact[5]['link'];
-$email  = $social_mediaContact[6]['link'];
-
+    require_once 'data.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,19 +11,21 @@ $email  = $social_mediaContact[6]['link'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="css/ccommonStyle.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/ccommonStyle.css">
-    <script src="js/animation.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <meta name="description" content=" is a tourist agency that helps tourists discover the hidden treasure of Morocco, we provide housing alongside other activities.">
+    <meta name="keywords" content="Morocco travel, Hidden gems, Authentic experiences, Cultural exploration, Off-the-beaten-path, Local guides, Adventure tourism, Unique accommodations, Sightseeing, Outdoor activities, Desert tours, Mountain trekking, Medina exploration, Traditional cuisine, Souvenirs, Historical sites, Riads, Camel rides, Berber culture, Diverse landscapes">
 
     <!-- add the favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="favicon_io/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="images/favicon_io/site.webmanifest">
     <title>Tourist Agency</title>
 </head>
-<body>
+<body id="page-content">
     <nav class="navbar navbar-expand-lg navbar-light bg-light m-0 p-0">
         <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,6 +47,18 @@ $email  = $social_mediaContact[6]['link'];
             </li>
           </ul>
           <div class="d-inline my-2 my-lg-0">
+            <!-- Translation Code here -->
+            <span class="translate px-2">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+					<!-- Translation Code End here -->
+            </div>
             <a href="registration/client.php" class="btn text-light me-5 px-4 fw-bold" type="button" style="background: #7451EB;">Start your journey</a>
 
             <a href="registration/admin.php" class="btn btn-light CTA">Log in</a> 
@@ -68,7 +67,7 @@ $email  = $social_mediaContact[6]['link'];
     </div>
       </nav>
       <section class="intoduction row align-items-center">
-        <div class="col px-5">
+        <div class="col-12 col-sm-6 px-5">
         <h2>LET'S DISCOVER <span class="text-danger"> MOROCCO </span></h2>
         <p>Don't wait until tomorrow, discover your adventure now 
           and feel the sensation of closeness to nature around you </p>
@@ -80,8 +79,26 @@ $email  = $social_mediaContact[6]['link'];
         </a>
         </div>
 
-    <div class="col">
-        <img src="images/introSection.jpeg" style="overflow: hidden;">
+    <div class="col-12 col-sm-6">
+        <div class="slideshow-container h-100">
+
+        <div class="mySlides fade">
+          <img src="images/introSection/view.jpg">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="images/introSection/backyard.jpg">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="images/introSection/hotel front view.jpg">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="images/introSection/fountain.jpg">
+        </div>
+
+        </div>
       </div>
        
       </section>
@@ -132,7 +149,7 @@ $email  = $social_mediaContact[6]['link'];
               <div class="col col-12 col-md-5 text-center fw-bold hidden animation-delay">
                   <p>I'm a Moroccan man named Ahmed who had an insatiable thirst for adventure. From a young age, I dreamed of exploring the world and experiencing all that it had to offer. After completing my education, I set out on a journey that would take me to every corner of the globe.</p>
 
-                  <p>Over the years, I had many incredible adventures. I hiked through the rainforests of South America, rode camels across the Sahara Desert, and climbed the tallest mountains in Asia. I met people from all walks of life and immersed myself in the culture of every country I visited.</p>
+                  <p>Over the years, I had many incredible adventures. I met people from all walks of life and immersed myself in the culture of every country I visited.</p>
 
                   <p>Despite all the amazing experiences I had, I always felt a deep connection to my homeland of Morocco. I realized that Morocco had a unique atmosphere that was unlike anywhere else in the world. From the bustling medinas to the tranquil beaches, Morocco was a land of contrasts that offered something for everyone.</p>
 
@@ -220,12 +237,15 @@ $email  = $social_mediaContact[6]['link'];
    ?>
    <div class="col-12 col-md-6 col-lg-4 mb-4">
        <div class="card scale">
-           <img class="card-img-top" src="Admin/Regional_Adventures/<?php echo $region['image']?>" alt="<?php echo $region['city']?>" style="height:300px;">
+           <a href="<?php echo $region['Location'];?>" target="_blank"><img class="card-img-top" src="Admin/Regional_Adventures/<?php echo $region['image']?>" alt="<?php echo $region['city']?>" style="height:300px;"></a>
            <div class="card-body">
             <h5 class="card-title fw-bold" style="color: #1237F6;"><?php echo $region['city']?></h5>
-            <p class="card-text">
+            <p class="card-text cutOff-text">
             <?php echo $region['description']?>
             </p>
+            <span class="expand-container">
+            <input type="checkbox" class="expand-btn" id="expand-btn">
+            </span>
           </div>
    </div>
    </div>
@@ -245,7 +265,7 @@ $email  = $social_mediaContact[6]['link'];
 ?>">
   <div class="container">
 <div class="d-flex mt-5"> 
-         <h2 class="secTitle scale mb-4">WHAT TOURIST SAY <span style="color: orange;">ABOUT US</span></h2>
+         <h2 class="secTitle scale mb-4">WHAT TOURISTS SAY <span style="color: orange;">ABOUT US</span></h2>
      </div>
     <div class="row g-5 justify-content-center align-items-center">
 
@@ -283,7 +303,7 @@ $email  = $social_mediaContact[6]['link'];
       ?>
         </div>
 
-        <img src="images/commentsSecImg.png" alt="comment section image" class="col-12 col-sm-5 offset-1 scale"/>
+        <img src="images/commentsSecImg.png" alt="comment section image" class="col-12 col-sm-5 offset-1 scale drop-shadow"/>
 
     </div>
     </div>
@@ -398,6 +418,7 @@ $email  = $social_mediaContact[6]['link'];
       
 
     <script src="js/index.js"></script>
+    <script src="js/animation.js"></script>
     <script src="js/displayCards.js"></script>
     <script src="js/validateInputs.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

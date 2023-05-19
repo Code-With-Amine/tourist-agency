@@ -16,7 +16,7 @@ function isNotItEmpty($var){
 }
 
 
-function isValideURL($url) {
+/*function isValideURL($url) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_NOBODY, true);
     curl_exec($ch);
@@ -28,7 +28,7 @@ function isValideURL($url) {
         // Link is invalid or returns a non-200 status code
          header('location:index.php?err=2');
     }
-}
+}*/
 
 
 try{
@@ -37,9 +37,8 @@ if(isset($_POST['updateFacebook']) && isNotItEmpty($_POST['facebook'])){
 
         $link = $_POST['facebook'];
         $name = 'facebook';
-        if(isValideURL($link)){
-            update($name, $link, $pdo);
-        }
+        update($name, $link, $pdo);
+        
 
 }elseif(isset($_POST['updateLinkedin']) && isNotItEmpty($_POST['linkedin'])){
 
@@ -59,9 +58,9 @@ if(isset($_POST['updateFacebook']) && isNotItEmpty($_POST['facebook'])){
 
     $link = $_POST['youtube'];
     $name = 'youtube';
-    if(isValideURL($link)){
-        update(trim($name), trim($link), $pdo);
-    }
+
+    update(trim($name), trim($link), $pdo);
+    
 
 
 }elseif(isset($_POST['updatePhone']) && isNotItEmpty($_POST['phone'])){

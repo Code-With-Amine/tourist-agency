@@ -9,6 +9,11 @@
     $inquires = $pdo->query('SELECT * FROM inquiries order by day(date) desc , f_Name asc ')->fetchAll(PDO::FETCH_ASSOC);
     $orders = $pdo->query('SELECT * from orders')->fetchAll(PDO::FETCH_ASSOC);
     $clients = $pdo->query('SELECT * FROM clients');
+    // Retrieve visitor count
+    $select_query = "SELECT COUNT(*) as visitor_count FROM visitors";
+    $stmt = $pdo->query($select_query);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $visitor_count = $row['visitor_count'];
 
 ?>
 <!DOCTYPE html>
@@ -88,6 +93,18 @@
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
+                <!-- Translation Code here -->
+					<span class="translate">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+					<!-- Translation Code End here -->
+
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-bar">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
@@ -128,7 +145,7 @@
 
             <div class="col-6"><img src="../images/people.png" alt="icon" class="Dashboard_icons" style="background-color: #DE608E"></div>
                 <div class="col-6 Dashboard_desc">
-                    <p class="text-center fw-bold"> 4444</p>
+                    <p class="text-center fw-bold"><?php echo $visitor_count; ?></p>
                     <p class="text-center fw-bold">visitors</p>
                 </div>
 

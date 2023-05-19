@@ -1,7 +1,10 @@
 <?php
           require_once '../../../include/database.php';
           require_once 'repetitive_functions.php';
-
+          session_start();
+          if(!isset($_SESSION['admin'])){
+                      echo '<h2>Please Log in</h2>';
+              }else{
           $service_info  = explode('_', $_REQUEST['service_info']);
           $id = $service_info[0];
           $serviceName = $service_info[1];
@@ -57,12 +60,23 @@
 <body>
     <div class="container ">
 
-    <nav class="row">
-        <a href="../services.php" class="col-6">
+    <nav class="row align-items-center">
+        <a href="../services.php" class="col">
                 <img src="../../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
 
-        <img src="../../../images/logo.png" alt="logo" class="col-6 logo">
+        <img src="../../../images/logo.png" alt="logo" class="col logo">
+         <!-- Translation Code here -->
+					<span class="translate col">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../../../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+              </div>
+            </span>
+					<!-- Translation Code End here -->
     </nav>
     
 <h2 class="text-center mt-4">Update A SERVICE</h2>
@@ -98,3 +112,5 @@ if(isset($_GET['error'])){
 </div>
 </body>
 </html>
+
+<?php } ?>

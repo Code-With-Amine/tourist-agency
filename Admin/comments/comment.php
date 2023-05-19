@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
+
 require_once '../../include/database.php';
 $comments = $pdo->query('SELECT com.id, cl.id as clientID, first_name, last_name, country, date, stars, comment  FROM comments com, clients cl WHERE com.client_id = cl.id')->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -24,11 +29,21 @@ $comments = $pdo->query('SELECT com.id, cl.id as clientID, first_name, last_name
 <body>
     <div class="container ">
 
-    <nav class="row">
+    <nav class="row alin-items-center">
         <a href="../dashboard.php" class="col-6">
                 <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
+         <!-- Translation Code here -->
+        <span class="translate col-5 mt-3">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
 
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+					<!-- Translation Code End here -->
         <img src="../../images/logo.png" alt="logo" class="col-6 logo">
     </nav>
 <h2 class="text-center mt-4">ADD A COMMENT</h2>
@@ -117,3 +132,5 @@ $comments = $pdo->query('SELECT com.id, cl.id as clientID, first_name, last_name
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php } ?>

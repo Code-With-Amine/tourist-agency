@@ -1,9 +1,11 @@
+*{
+    box-sizing: border-box;
+}
 body,html{
     padding: 0;
     margin: 0;
     overflow-x: hidden;
 }
-
 /*styling the nav bar*/
 .navbar-nav a{
     color: black!important;
@@ -46,10 +48,18 @@ body,html{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    overflow: hidden;
     z-index: -1;
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
    
+  }
+
+  @media screen and (max-width: 574px) {
+        /*make the introduction picture normal in smaller screens*/
+        .intoduction img{
+            display: none;
+         }
   }
 
 
@@ -94,11 +104,6 @@ footer{
     padding: 12px 0px;
 }
 @media screen and (max-width: 800px) {
-
-    /*make the introduction picture hide in smaller screens*/
-    .intoduction img{
-        display: none;
-    }
     .intoduction button{
         display: block;
         margin: 22px 0px;
@@ -449,3 +454,71 @@ footer{
   .hideComment {
     display: none;
   }
+
+
+  /* style the introduction section */
+
+  .mySlides {
+    display: none;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  margin: auto;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/*  style the regional advateurs section */
+
+.cutOff-text{
+    --max-lines: 3; /* css variable that holdes the max number of lines */
+    --line-height: 1.4; 
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines);
+}
+
+.expand-btn{
+        appearance: none;/*it hides the main checkbox and i will have the possibillty to create my own style */
+        cursor: pointer;
+        font-weight: bold;
+
+}
+
+.expand-container{
+    cursor: pointer;
+    border-radius: .25em;
+    -webkit-border-radius: .25em;
+    -moz-border-radius: .25em;
+    -ms-border-radius: .25em;
+    -o-border-radius: .25em;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    padding: .5em .8em;
+    border: 2px solid black;
+}
+
+.expand-container:hover{
+    background-color: #ccc;
+}
+
+.expand-btn::before{
+    content: "Expand";
+}
+
+.expand-btn:checked:before{
+    content: "Collapse";
+}

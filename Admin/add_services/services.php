@@ -1,5 +1,9 @@
 <?php
     require_once '../../include/database.php';
+    session_start();
+    if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
     $services = $pdo->query('select * from services')->fetchAll(PDO::FETCH_ASSOC);
     $row_count = $pdo->query('select count(*) as offers FROM services')->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -26,11 +30,22 @@
     <div class="container ">
 
     <nav class="row">
-        <a href="../dashboard.php" class="col-6">
+        <a href="../dashboard.php" class="col">
                 <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
 
-        <img src="../../images/logo.png" alt="logo" class="col-6 logo">
+        <img src="../../images/logo.png" alt="logo" class="col logo">
+        <!-- Translation Code here -->
+					<span class="translate col mt-3">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+		<!-- Translation Code End here -->
     </nav>
 <h2 class="text-center mt-4">ADD A SERVICE</h2>
 
@@ -101,3 +116,4 @@ if(isset($_GET['error'])){
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php }?>

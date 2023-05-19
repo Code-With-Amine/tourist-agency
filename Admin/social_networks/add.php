@@ -1,5 +1,9 @@
 <?php
-    require_once '../../include/database.php';
+session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
+            require_once '../../include/database.php';
     $socials = $pdo->query('select * from social_networks')->fetchAll(PDO::FETCH_ASSOC);
     $row_count = $pdo->query('select count(*) as offers FROM social_networks')->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -93,3 +97,4 @@ if(isset($_GET['error'])){
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php } ?>

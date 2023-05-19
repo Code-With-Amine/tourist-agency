@@ -21,7 +21,7 @@ WmReasons[1].addEventListener('click',()=>{ // Moroccan cuisine
 
 WmReasons[2].addEventListener('click',()=>{ // Scenic Beauty
     setBackgroung(2)
-    changeImg("images/scenic-beauty.webp")
+    changeImg("images/scenic-beauty")
     document.getElementById('title').innerHTML = "Scenic Beauty"
     document.getElementById('text').innerHTML = "Morocco's scenic beauty is another draw for tourists. The country's varied terrain ranges from the towering Atlas Mountains to the rolling sand dunes of the Sahara Desert. Visitors can hike in the mountains, ski in the winter, or ride camels through the desert. The beaches of Essaouira and Agadir offer the perfect spot to relax and soak up the sun. The country is also home to several national parks and nature reserves that are home to a variety of wildlife, including Barbary macaques and Saharan cheetahs."
 })
@@ -65,3 +65,33 @@ closeIcon.addEventListener('click', () => {
   messageBox.style.display = 'none';
 });
 
+//Automatic Slideshow
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+      slides[slideIndex-1].style.display = "block";  
+      setTimeout(showSlides, 3000); // Change image every 3 seconds
+}
+
+//  make the regional advateurs section text dynamic
+const expand = document.querySelector('.expand-container');
+expand.addEventListener('click', ()=>{
+  const status = document.querySelector('#expand-btn');
+  const cutoffText = document.querySelector('h5 ~ p');
+
+  if(status.checked){
+    cutoffText.classList.remove('cutOff-text');
+  }else{
+    cutoffText.classList.add('cutOff-text');
+
+  }
+
+})

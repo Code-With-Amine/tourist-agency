@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+            echo '<h2>Please Log in</h2>';
+    }else{
+
 if(isset($_POST['Update'])){
     require_once '../../include/database.php';
         if(!empty($_POST['ClientID']) && !empty($_POST['comment']) && isset($_POST['stars'])){
@@ -91,3 +96,4 @@ if(isset($_POST['Update'])){
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>
 </html>
+           <?php  } ?>

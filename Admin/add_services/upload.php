@@ -1,6 +1,6 @@
 <?php 
-
 require_once '../../include/database.php';
+
 $error = '';
 // the below code is jut to display errors
 ini_set('display_errors', 1); 

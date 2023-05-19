@@ -1,5 +1,11 @@
 <?php
+     session_start();
+
+    if(!isset($_SESSION['admin'])){
+        echo '<h2>Please Log in</h2>';
+}else{
     require_once '../../include/database.php';
+
     $plalces = $pdo->query('select * from places_to_visite')->fetchAll(PDO::FETCH_ASSOC);
     $row_count = $pdo->query('select count(*) as offers FROM places_to_visite')->fetch(PDO::FETCH_ASSOC);
 
@@ -26,12 +32,23 @@
 <body>
     <div class="container ">
 
-    <nav class="row">
-        <a href="../dashboard.php" class="col-6">
+    <nav class="row align-items-center">
+        <a href="../dashboard.php" class="col">
                 <img src="../../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
 
-        <img src="../../images/logo.png" alt="logo" class="col-6 logo">
+        <img src="../../images/logo.png" alt="logo" class="col logo">
+            <!-- Translation Code here -->
+					<span class="translate col">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+					<!-- Translation Code End here -->
     </nav>
 <h2 class="text-center mt-4">ADD A CITY</h2>
 
@@ -62,8 +79,13 @@ if(isset($_GET['error'])){
   </div>
 
     <div class="mt-5">
-    <label for="">City name</label>
+    <label for="">Place name</label>
     <input type="text" class="form-control" name="city" id="service" value="<?php echo isset($_GET['city'])? $_GET['city']:''?>">
+  </div>
+
+  <div class="mt-5">
+    <label for="">Location</label>
+    <input type="text" class="form-control" name="Location" id="service" value="<?php echo isset($_GET['location'])? $_GET['location']:''?>">
   </div>
 
   <div class="mt-5">
@@ -104,7 +126,7 @@ if(isset($_GET['error'])){
                                 <th><?php echo $place['description']?></th>
                                 <td><?= $place['creation_date'] ?></td>
                                 <td>
-                                    <a href="update.php?id=<?php echo $place['id']?>&city=<?php echo $place['city']?>&path=<?php echo $place['image']?>&description=<?php echo $place['description']?>&id=<?php echo $place['id']?>" class="btn btn-primary">Update</a>
+                                    <a href="update.php?id=<?php echo $place['id']?>&city=<?php echo $place['city']?>&path=<?php echo $place['image']?>&description=<?php echo $place['description']?>&id=<?php echo $place['id']?>&location=<?php echo $place['Location']?>" class="btn btn-primary">Update</a>
 
                                     <a href="delete.php?Path=<?php echo $place['image']?>&id=<?php echo $place['id'] ?>" class="btn btn-danger mt-4" onclick="return confirm('Are you sure you want to delete <?php echo $place['city']?>?')" name="delete">Delete</a>
 
@@ -122,3 +144,4 @@ if(isset($_GET['error'])){
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php } ?>
