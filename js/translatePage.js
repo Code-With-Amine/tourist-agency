@@ -1,5 +1,3 @@
-
-
 function googleTranslateElementInit() { 
     new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
     const trand = document.querySelector('.goog-te-combo');
@@ -23,16 +21,6 @@ function googleTranslateElementInit() {
                         trand.classList.remove("show");
                     }
                     })
-
-                    // select english by default
-                    for (let i = 0; i < trand.options.length; i++) {
-
-                        let option = trand.options[i];
-                        if (option.value.indexOf("en") !== -1) {
-                        option.selected = true;
-                        break;
-                        }
-                    }
                 });
         }
 

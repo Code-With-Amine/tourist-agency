@@ -35,13 +35,19 @@ body,html{
     .navbar{
         padding: 12px 0px!important;
     }
+    nav .CTA{
+        display: block;
+        margin: 10px auto;
+    }
+    .CTA-client{
+        display: block;
+        width: 100%;
+    }
   }
   /* styling the introduction section */
 
 .intoduction {
     background-color: rgba(253, 213, 213, 0.5);
-    height: 100vh;
-    max-height: 800px;
     overflow: hidden;
   }
   .intoduction img {

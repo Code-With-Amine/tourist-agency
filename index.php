@@ -59,12 +59,11 @@
                     </span>
 					<!-- Translation Code End here -->
             </div>
-            <a href="registration/client.php" class="btn text-light me-5 px-4 fw-bold" type="button" style="background: #7451EB;">Start your journey</a>
+            <a href="registration/client.php" class="btn text-light me-5 px-4 fw-bold CTA-client" type="button" style="background: #7451EB;">Start your journey</a>
 
             <a href="registration/admin.php" class="btn btn-light CTA">Log in</a> 
           </div>
         </div>
-    </div>
       </nav>
       <section class="intoduction row align-items-center">
         <div class="col-12 col-sm-6 px-5">
@@ -132,7 +131,7 @@
      
 
         <div class="d-flex mt-5 hidden animation-delay"> 
-            <h2 class="secTitle">About us</h2>
+            <h2 class="secTitle mt-3">About us</h2>
         </div>
 
         <div class="d-flex justify-content-center align-items-center mt-5" style="flex-wrap: wrap;">
@@ -233,26 +232,27 @@
 </div>
 <div class="row mt-5 justify-content-center" id="severcis">
 <?php
+      $cardId = 0;
        foreach($Regional_Adventures as $region){
    ?>
    <div class="col-12 col-md-6 col-lg-4 mb-4">
-       <div class="card scale">
+       <div class="card scale cards-number">
            <a href="<?php echo $region['Location'];?>" target="_blank"><img class="card-img-top" src="Admin/Regional_Adventures/<?php echo $region['image']?>" alt="<?php echo $region['city']?>" style="height:300px;"></a>
            <div class="card-body">
             <h5 class="card-title fw-bold" style="color: #1237F6;"><?php echo $region['city']?></h5>
-            <p class="card-text cutOff-text">
+            <p class="card-text cutOff-text" id="cutoff-<?php echo $cardId ?>">
             <?php echo $region['description']?>
             </p>
-            <span class="expand-container">
-            <input type="checkbox" class="expand-btn" id="expand-btn">
+            <span class="expand-container btn-container-<?php echo $cardId ?>">
+            <input type="checkbox" class="expand-btn" id="expand-btn-<?php echo $cardId ?>">
             </span>
           </div>
    </div>
    </div>
    <?php
+      $cardId++;
        }
    ?>
-
 
 </section> 
 <!-- client comments -->
@@ -265,7 +265,7 @@
 ?>">
   <div class="container">
 <div class="d-flex mt-5"> 
-         <h2 class="secTitle scale mb-4">WHAT TOURISTS SAY <span style="color: orange;">ABOUT US</span></h2>
+         <h2 class="secTitle scale my-4">WHAT TOURISTS SAY <span style="color: orange;">ABOUT US</span></h2>
      </div>
     <div class="row g-5 justify-content-center align-items-center">
 
@@ -383,10 +383,10 @@
           <div class="row d-flex align-items-center justify-content-center text-center">
             <div class="col-12 col-md-4 mb-4 mb-md-0">
             <div class="d-flex align-items-start flex-column">
-              <a href="mailto:<?php echo $email ?>" class="btn text-light"><i class="fa-regular fa-envelope" style="color: #146aff;"></i> <?php echo $email ?></a>
-              <a href="" class="btn text-light"><i class="fa-sharp fa-solid fa-phone" style="color: #146aff;"></i> <?php echo $phone?></a>
+              <a href="mailto:<?php echo $email ?>" class="btn text-light"><i class="fa-regular fa-envelope" style="color: #146aff;"></i> &nbsp;<?php echo $email ?></a>
+              <a href="" class="btn text-light"><i class="fa-sharp fa-solid fa-phone" style="color: #146aff;"></i> &nbsp;<?php echo $phone?></a>
               <a href="https://earth.google.com/web/search/Ida/@29.83671161,-9.01945308,1431.5860287a,172.48593294d,35y,172.12592996h,0t,0r/data=CigiJgokCcdajbnAVTRAEcRajbnAVTTAGdG53e-hJElAIbo2HSUAz0nA"
-               class="btn text-light" target="_blank"><i class="fa-solid fa-location-dot" style="color: #1f71ff;"></i> Agadir, Morocco</a>
+               class="btn text-light" target="_blank"><i class="fa-solid fa-location-dot" style="color: #1f71ff;"></i> &nbsp;Agadir, Morocco</a>
               </div>      
             </div>
       

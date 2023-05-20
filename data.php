@@ -1,14 +1,12 @@
 <?php
 require_once 'include/database.php';
-/* storing the visiter in formations*/
+/* storing the visiter informations*/
 // Function to check if a visitor is unique based on IP address and cookie
 function isUniqueVisitor($pdo, $ip_address, $cookie)
 {
-    $select_query = "SELECT COUNT(*) as visitor_count FROM visitors WHERE ip_address = :ip AND cookie = :cookie";
+    $select_query = "SELECT COUNT(*) as visitor_count FROM visitors WHERE ip_address = ? AND cookie = ?";
     $stmt = $pdo->prepare($select_query);
-    $stmt->bindParam(':ip', $ip_address);
-    $stmt->bindParam(':cookie', $cookie);
-    $stmt->execute();
+    $stmt->execute([$ip_address, $cookie]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $visitor_count = $row['visitor_count'];
 
@@ -23,15 +21,15 @@ $cookie = isset($_COOKIE[$cookie_name]) ? $_COOKIE[$cookie_name] : '';
 if (empty($cookie)) {
     $cookie_value = md5(uniqid()); // Generate a unique cookie value
     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // Set the cookie for 30 days
+
 } else {
     $cookie_value = $cookie;
 }
 
 if (isUniqueVisitor($pdo, $ip_address, $cookie_value)) {
-    $insert_query = "INSERT INTO visitors (ip_address, cookie) VALUES (:ip, :cookie)";
+    $insert_query = "INSERT INTO visitors (ip_address, cookie) VALUES (?, ?)";
     $stmt = $pdo->prepare($insert_query);
-    $stmt->bindParam(':ip', $ip_address);
-    $stmt->bindParam(':cookie', $cookie_value);
+    $stmt->execute([$ip_address, $cookie]);
     $stmt->execute();
 }
 /* end of storing the visiter informations */

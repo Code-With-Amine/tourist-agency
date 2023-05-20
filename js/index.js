@@ -82,16 +82,20 @@ function showSlides() {
 }
 
 //  make the regional advateurs section text dynamic
-const expand = document.querySelector('.expand-container');
-expand.addEventListener('click', ()=>{
-  const status = document.querySelector('#expand-btn');
-  const cutoffText = document.querySelector('h5 ~ p');
+let cardsNumber = document.querySelectorAll('.cards-number'); // the number of cards that i have in my section
+for(let i = 0 ; i < cardsNumber.length ; i++){ // loop throught each card and add the event listener
+        const expand = document.querySelector(`.btn-container-${i}`); // the expand button container 
+        expand.addEventListener('click', ()=>{ // when i click the expand button container
+          const status = document.querySelector(`#expand-btn-${i}`); // retrive the checkbox
+          const cutoffText = document.querySelector(`#cutoff-${i}`);
 
-  if(status.checked){
-    cutoffText.classList.remove('cutOff-text');
-  }else{
-    cutoffText.classList.add('cutOff-text');
+          if(status.checked){
+            cutoffText.classList.remove('cutOff-text');
+          }else{
+            cutoffText.classList.add('cutOff-text');
 
-  }
+          }
 
-})
+        })
+
+}
