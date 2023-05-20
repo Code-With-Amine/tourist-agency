@@ -30,7 +30,6 @@ if (isUniqueVisitor($pdo, $ip_address, $cookie_value)) {
     $insert_query = "INSERT INTO visitors (ip_address, cookie) VALUES (?, ?)";
     $stmt = $pdo->prepare($insert_query);
     $stmt->execute([$ip_address, $cookie]);
-    $stmt->execute();
 }
 /* end of storing the visiter informations */
 
