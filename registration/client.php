@@ -33,15 +33,26 @@ $services = $pdo->query('SELECT * FROM services')->fetchAll(PDO::FETCH_ASSOC); /
     <link rel="manifest" href="favicon_io/site.webmanifest">
     <title>Client</title>
 </head>
-<body>
+<body id="page-content">
     <div class="container ">
 
-    <nav class="row">
+    <nav class="row align-items-center">
         <a href="../index.php" class="col-6">
                 <img src="../images/backwards_arrow.png" alt="backwards_arrow" class="backwards">
         </a>
 
        <!-- <img src="../images/logo.png" alt="logo" class="col-6 logo"> -->
+        <!-- Translation Code here -->
+        <span class="translate px-2 col-6">
+                        <div class="select-wrapper">
+                    <i class="fa-solid fa-globe showTransalation"></i>
+
+					    <div class="translate pe-3" id="google_translate_element"></div>
+                            <script type="text/javascript" src="../js/translatePage.js"></script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </span>
+					<!-- Translation Code End here -->
     </nav>
 
 <div class="form radius">

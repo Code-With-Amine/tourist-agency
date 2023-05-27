@@ -15,22 +15,6 @@ function isNotItEmpty($var){
         header('location:index.php?err=1');
 }
 
-
-/*function isValideURL($url) {
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_NOBODY, true);
-    curl_exec($ch);
-    $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-    if ($responseCode == 200) {
-        return true;
-    } else {
-        // Link is invalid or returns a non-200 status code
-         header('location:index.php?err=2');
-    }
-}*/
-
-
 try{
 
 if(isset($_POST['updateFacebook']) && isNotItEmpty($_POST['facebook'])){
