@@ -2,15 +2,17 @@
 require_once 'include/database.php';
 /* storing the visiter informations*/
 // Function to check if a visitor is unique based on IP address and cookie
-function isUniqueVisitor($pdo, $ip_address, $cookie)
+function isUniqueVisitor($pdo, $ip_address)
 {
-    $select_query = "SELECT COUNT(*) as visitor_count FROM visitors WHERE ip_address = ? AND cookie = ?";
+    $select_query = "SELECT * FROM visitors WHERE ip_address = ?";
     $stmt = $pdo->prepare($select_query);
-    $stmt->execute([$ip_address, $cookie]);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $visitor_count = $row['visitor_count'];
+    $stmt->execute([$ip_address]);
 
-    return $visitor_count === '0';
+    if($stmt->rowCount() == 0){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 // Capture visitor information
@@ -26,7 +28,7 @@ if (empty($cookie)) {
     $cookie_value = $cookie;
 }
 
-if (isUniqueVisitor($pdo, $ip_address, $cookie_value)) {
+if (isUniqueVisitor($pdo, $ip_address)) {
     $insert_query = "INSERT INTO visitors (ip_address, cookie) VALUES (?, ?)";
     $stmt = $pdo->prepare($insert_query);
     $stmt->execute([$ip_address, $cookie]);
